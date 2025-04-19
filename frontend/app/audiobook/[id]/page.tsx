@@ -4,8 +4,10 @@ interface Props {
   params: { id: string };
 }
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/+$/, '');
+
 async function fetchAudiobook(id: string): Promise<Audiobook | null> {
-  const res = await fetch(`http://localhost:5000/api/audiobooks/${id}`, {
+  const res = await fetch(`${BACKEND_URL}/api/audiobooks/${id}`, {
     cache: 'no-store',
   });
 

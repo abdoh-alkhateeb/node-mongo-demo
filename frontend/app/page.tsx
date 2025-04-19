@@ -1,8 +1,10 @@
 import { Audiobook } from '@/types/audiobook';
 import Link from 'next/link';
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/+$/, '');
+
 async function fetchAudiobooks(): Promise<Audiobook[]> {
-  const res = await fetch('http://localhost:5000/api/audiobooks', {
+  const res = await fetch(`${BACKEND_URL}/api/audiobooks`, {
     cache: 'no-store',
   });
 
